@@ -1,6 +1,6 @@
 <?php
-require('../../fpdf/fpdf.php');
-include ('../conexion.php');
+require('fpdf/fpdf.php');
+include ('conexion.php');
 $con = connection();
 
 
