@@ -13,7 +13,7 @@ if(!empty($_POST["button"])) {
             $_SESSION["nombre"] = $datos-> nombre;
             $_SESSION["CorreoElectronico"] = $datos-> CorreoElectronico;
             $_SESSION["contrasena"] = $datos-> contrasena;
-            header("Location: ../Inicio/inicio2.php");
+            header("Location: inicio2.php");
             exit();
         } else {
             echo "Usuario o contraseña incorrectos";
