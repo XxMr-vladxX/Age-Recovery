@@ -15,10 +15,10 @@ include ('loginpaciente.php');
 <body>
     <div class="hero">
         <nav>
-            <img src="../Agendar/Age.png" class="logo">
+            <img src="Age.png" class="logo">
             <ul>
-                <li> <a href="../Inicio/inicio.php">Inicio</a></li>
-                <li> <a href="../Inicio/nuevo.php">Registrarse</a></li>
+                <li> <a href="inicio.php">Inicio</a></li>
+                <li> <a href="nuevo.php">Registrarse</a></li>
             </ul>
         </nav>
     </div>
@@ -35,8 +35,8 @@ include ('loginpaciente.php');
             </div>
             <input type="submit" name="button" value="Iniciar">
             <div class="registrarse">
-                ¿Todavía no tienes una cuenta? <a href="../Inicio/nuevo.php">Regístrate</a><br>
-                ¿Eres Médico? <a href="../PerfilMedicos/Principal/InicioDeSesion.php">Inicia sesión</a>
+                ¿Todavía no tienes una cuenta? <a href="nuevo.php">Regístrate</a><br>
+                ¿Eres Médico? <a href="InicioDeSesion.php">Inicia sesión</a>
             </div>
         </form>
     </div>
