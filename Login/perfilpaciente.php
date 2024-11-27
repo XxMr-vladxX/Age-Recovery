@@ -23,10 +23,10 @@ while($row = mysqli_fetch_array($result)):
         <nav>
             <img src="../PerfilMedicos/Principal/Logo.png" class="logo">
             <ul>
-                <li><a href="../Inicio/inicio2.php">Inicio</a></li>
-                <li><a href="../Agendar/formulario.php">Agendar Cita</a></li>
+                <li><a href="inicio2.php">Inicio</a></li>
+                <li><a href="formulario.php">Agendar Cita</a></li>
                 <!-- Cambio realizado: Enlace 'Tus citas!' ahora conecta con eliminar.php y pasa el IdPaciente -->
-                <li><a href="../Agendar/eliminar.php">Tus citas!</a></li>
+                <li><a href="eliminar.php">Tus citas!</a></li>
                 <!-- Fin del cambio -->
             </ul>
         </nav><br>
