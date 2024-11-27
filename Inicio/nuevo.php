@@ -90,7 +90,18 @@
                         <label>Contraseña</label>
                     </div>
                     <div class="campo">
-                        <input type="text" name="enfermedades" required>
+                    <select name="sexo" required>
+                            <option value="" disabled selected></option>
+                            <option value="Gastritis">Gastritis</option>
+                            <option value="Migraña">Migraña</option>
+                            <option value="Diabetes">Diabetes</option>
+                            <option value="Asma">Asma</option>
+                            <option value="Autismo">Autismo</option>
+                            <option value="Herpes">Herpes</option>
+                            <option value="Artritis">Artritis</option>
+                            <option value="Otra">Otra</option>
+                            <option value="Ninguna">Ninguna</option>
+                        </select>
                         <label>Enfermedades</label>
                     </div>
                     <div class="campo">
@@ -112,3 +123,4 @@
 </footer>
 </body>
 </html>
+
