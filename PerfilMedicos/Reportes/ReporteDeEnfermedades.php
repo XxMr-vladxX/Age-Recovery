@@ -1,6 +1,6 @@
 <?php
-    include ('../Principal/conexion.php');
-    include ('../Principal/funciones.php');
+    include ('conexion.php');
+    include ('funciones.php');
     $conn = connection();
     session_start();
     $IdMedico = $_SESSION['IdMedico'];
@@ -16,7 +16,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medicos</title>
-    <link rel="stylesheet" href="../Principal/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -24,7 +24,7 @@
 <header>
 <div class="hero">
         <nav>
-            <img src="../Principal/Logo.png" class="logo">
+            <img src="Logo.png" class="logo">
             <ul>
                 <li> <a href="../Principal/InicioDeSesion.php">Cerrar Sesion</a></li>
             </ul>
@@ -47,7 +47,7 @@
         </tr>
         <tr class="Boton2"> 
         <td colspan="3"> 
-                <form class="BotonesReportes" method="POST" action="../Principal/ReportesMedicos.php">
+                <form class="BotonesReportes" method="POST" action="ReportesMedicos.php">
                     <input type="submit" name="boton" class="btn btn-primary" value="Enfermedades Similares" style="width: 100%; height: 100%;"> 
                     <label for="Enfermedad">Elige una Enfermedad:</label>
                 <select name="Enfermedad" id="Enfermedad" class="custom-select">
@@ -103,7 +103,7 @@
 
         <tr class="Boton2">
             <td colspan="3"> 
-                <form class="BotonesLargos" method="POST" action="../Principal/InicioMedicos.php">
+                <form class="BotonesLargos" method="POST" action="InicioMedicos.php">
                     <input type="submit" name="boton" class="btn btn-primary" value="CITAS" style="width: 100%;"> 
                 </form>
             </td>
@@ -115,7 +115,7 @@
 
         <tr class="Boton2">
             <td colspan="3"> 
-                <form class="BotonesLargos" method="get" action="../Principal/InformacionMedico.php">
+                <form class="BotonesLargos" method="get" action="InformacionMedico.php">
                     <input type="submit" name="boton" class="btn btn-primary" value="INFORMACION" style="width: 100%;"> 
                 </form>
             </td>
@@ -128,7 +128,7 @@
 
         <tr class="Boton2">
             <td colspan="3"> 
-                <form class="BotonesLargos" method="get" action="../Principal/InformacionMedico.php">
+                <form class="BotonesLargos" method="get" action="InformacionMedico.php">
                     <input type="submit" name="boton" class="btn btn-primary" value="Cerrar Sesion" style="width: 100%;"> 
                 </form>
             </td>
@@ -189,7 +189,7 @@
                 <tr class="SubtituloPaciente">
                     <td colspan="8"></td>
                     <td colspan="5"> 
-                    <form class="BotonesLargos" method="get" action="../ReportesPDF/ReportePacientesSimilitudes.php" target="_blank">
+                    <form class="BotonesLargos" method="get" action="ReportePacientesSimilitudes.php" target="_blank">
                     <input type="hidden" name = "Enfermedad" value="<?php echo $Enfermedad;?>">
                     <input type="submit" name="boton" class="btn btn-primary" value="Imprimir Documento PDF" style="width: 100%;"> 
                       </form>
