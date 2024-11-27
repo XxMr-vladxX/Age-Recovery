@@ -44,7 +44,7 @@ $query = mysqli_stmt_execute($stmt);
 // Verificar si la consulta se ejecutó correctamente
 if ($query) {
     // Si se insertó correctamente, redirigir a la página de inicio
-    header("Location: ../Login/iniciarsesionpaciente.php"); 
+    header("Location: iniciarsesionpaciente.php"); 
 } else {
     // Si hubo un error, mostrar el mensaje de error
     echo "Error: " . mysqli_error($conn);
