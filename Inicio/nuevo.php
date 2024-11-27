@@ -14,7 +14,7 @@
         <img src="Age Recovery.jpg.png" class="logo">
         <ul>
             <li><a href="inicio.php">Inicio</a></li>
-            <li><a href="../Login/iniciarsesionpaciente.php">Iniciar sesión</a></li>
+            <li><a href="iniciarsesionpaciente.php">Iniciar sesión</a></li>
         </ul>
     </nav>
     <section id="contacto">
@@ -112,7 +112,7 @@
 
                 <input type="submit" value="Registrar">
                 <div class="registrarse">
-                    ¿Ya tienes cuenta? <a href="../Login/iniciarsesionpaciente.php">Inicia sesión aquí</a>
+                    ¿Ya tienes cuenta? <a href="iniciarsesionpaciente.php">Inicia sesión aquí</a>
                 </div>
             </form>
         </div>
