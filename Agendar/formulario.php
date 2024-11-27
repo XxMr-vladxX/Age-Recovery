@@ -195,7 +195,7 @@ if ($stmt) {
         <nav>
             <img src="Age.png" class="logo">
             <ul>
-                <li> <a href="../Inicio/inicio2.php">Inicio</a></li>
+                <li> <a href="inicio2.php">Inicio</a></li>
                 <li> <a href="eliminar.php">Tus Citas</a></li>
             </ul>
         </nav>
