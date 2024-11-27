@@ -14,7 +14,7 @@
         <nav>
             <img src="Age Recovery.jpg.png" class="logo">
             <ul>
-                <li><a href="../Login/iniciarsesionpaciente.php">Iniciar sesión</a></li>
+                <li><a href="iniciarsesionpaciente.php">Iniciar sesión</a></li>
                 <li><a href="nuevo.php">Registrarse</a></li>          
             </ul>
         </nav>
