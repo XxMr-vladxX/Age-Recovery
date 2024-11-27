@@ -1,7 +1,7 @@
 <?php
-require('../fpdf/fpdf.php');
-include('../Principal/funciones.php');
-include ('../Principal/conexion.php');
+require('fpdf/fpdf.php');
+include('funciones.php');
+include ('conexion.php');
 $con = connection();
 session_start();
 $IdMedico = $_SESSION['IdMedico'];
@@ -25,7 +25,7 @@ function Header()
     $this->Cell(60);
     $this->Cell(70,10,'Pacientes Que Mas Cancelan ',0,0,'C');
     $this->Ln(15);
-    $this->Image('../Principal/logo.png', 10, 0, 30, 30);
+    $this->Image('logo.png', 10, 0, 30, 30);
     $this->SetFont('Times','',10);
     $this->SetTextColor(0, 0, 0);
     $AcomodarTexto = 30;
