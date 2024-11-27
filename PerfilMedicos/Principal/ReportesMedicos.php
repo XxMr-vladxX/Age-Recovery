@@ -50,10 +50,16 @@
                 <form class="BotonesReportes" method="POST" action="../Reportes/ReporteDeEnfermedades.php">
                     <input type="submit" name="boton" class="btn btn-primary" value="Enfermedades Similares" style="width: 100%; height: 100%;"> 
                     <label for="Enfermedad">Elige una Enfermedad:</label>
-                <select name="Enfermedad" id="Enfermedad" class="custom-select">
-                 <option value="Gastritis">Gastritis</option>
-                 <option value="Migraña">Migraña</option>
-                 <option value="Diabetes">Diabetes</option>
+               <select name="Enfermedad" id="Enfermedad" class="custom-select">
+                            <option value="Gastritis">Gastritis</option>
+                            <option value="Migraña">Migraña</option>
+                            <option value="Diabetes">Diabetes</option>
+                            <option value="Asma">Asma</option>
+                            <option value="Autismo">Autismo</option>
+                            <option value="Herpes">Herpes</option>
+                            <option value="Artritis">Artritis</option>
+                            <option value="Otra">Otra</option>
+                            <option value="Ninguna">Ninguna</option>
                  </select>
                 </form>
              </td>
