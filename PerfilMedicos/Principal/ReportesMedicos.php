@@ -47,7 +47,7 @@
         </tr>
         <tr class="Boton2"> 
         <td colspan="3"> 
-                <form class="BotonesReportes" method="POST" action="../Reportes/ReporteDeEnfermedades.php">
+                <form class="BotonesReportes" method="POST" action="ReporteDeEnfermedades.php">
                     <input type="submit" name="boton" class="btn btn-primary" value="Enfermedades Similares" style="width: 100%; height: 100%;"> 
                     <label for="Enfermedad">Elige una Enfermedad:</label>
                <select name="Enfermedad" id="Enfermedad" class="custom-select">
@@ -71,7 +71,7 @@
 
         <tr class="Boton2"> 
         <td colspan="3"> 
-                <form class="BotonesReportes" method="POST" action="../Reportes/ReporteGenero.php">
+                <form class="BotonesReportes" method="POST" action="ReporteGenero.php">
                 <input type="submit" name="boton" class="btn btn-primary" value="Reporte Por Genero" style="width: 100%; height: 100%;"> 
                 <label for="Genero">Elige un Genero:</label>
                 <select name="Genero" id="Genero" class="custom-select">
@@ -88,7 +88,7 @@
 
         <tr class="Boton2"> 
         <td colspan="3"> 
-                <form class="BotonesReportes" method="POST" action="../Reportes/ReporteTopPacientes.php">
+                <form class="BotonesReportes" method="POST" action="ReporteTopPacientes.php">
                     <input type="submit" name="boton" class="btn btn-primary" value="Reporte De Cancelaciones" style="width: 100%; height: 100%;"> 
                 </form>
              </td>
