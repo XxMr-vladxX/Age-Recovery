@@ -74,6 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $idPaciente = $_SESSION['IdPaciente'];
+
 $citas = obtenerCitasActivas($conn, $idPaciente);
 ?>
 
