@@ -1,0 +1,55 @@
+
+
+.table-dark thead th { background-color: #adadad; color: #008ac0; padding: 20px; font-family: 'Times New Roman', Times, serif; font-size: 30px;}  
+.table-dark thead {border-color: #adadad;} 
+
+.table-dark tbody th{ background-color: #cfcbcb; color: #008ac0; padding: 15px; font-family: 'Times New Roman', Times, serif; font-size: 30px;} 
+
+
+.table-dark tbody td{padding: 5px; background-color: #e1e0e0; color: #003c6e; font-family: 'Times New Roman', Times, serif; font-size: 30px;} 
+
+.table-dark .Espacio td{padding: 100px; background-color: #e1e0e0; font-family: 'Times New Roman', Times, serif;}
+
+.table-dark .EspacioMini td{padding: 5px; background-color: #e1e0e0; font-family: 'Times New Roman', Times, serif;}
+
+.table-dark .Boton2 td{ background-color: #008ac0; font-family: 'Times New Roman', Times, serif;}
+
+.table-dark tbody{
+    border-color: #e1e0e0;
+}
+
+.InformacionDeLaCita{
+    position:fixed;
+    top:100px;
+    right:40px;
+    font-family: 'Times New Roman', Times, serif;
+   
+}
+
+.InformacionDeLaCita .HeaderDeLaTabla th{
+    padding: 30px;
+    background-color: #f7f7f7; color: #003c6e;
+    font-size: 45px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 10px;
+}
+
+.SubtituloPaciente td{
+    font-size: 40px;
+    background-color: #f7f7f7; color: #003c6e;
+    font-family: 'Times New Roman', Times, serif;
+}
+.InformacionDelPaciente td{
+    font-size: 30px;
+    padding: 5px;
+    background-color: #f7f7f7; color: rgb(5, 5, 5);
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 10px;
+}
+
+.BotonesLargos input{
+    font-size: 50px;
+}
+
+
