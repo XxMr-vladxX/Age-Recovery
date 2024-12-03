@@ -3,14 +3,20 @@ include('conexion.php'); // Asegúrate de incluir el script de conexión
 session_start();
 $conn = connection();
 
+
+$message = "";
+
+
+
+
 // Buscar paciente por nombre o apellido
-if ($_SESSION['nombre']) {
-    $nombrePaciente = $_SESSION['nombre'];
+if ($_SESSION['IdPaciente']) {
+    $nombrePaciente = $_SESSION['IdPaciente'];
 
     // Consulta para obtener los datos del paciente usando LIKE para búsqueda parcial
     $sql = "SELECT nombre, apellido, fechaNacimiento, sexo, TipoDeSangre, peso, estatura, direccion, CorreoElectronico, telefono, enfermedades, alergias, Cirugias_Accidentes, Estatus, idPaciente
             FROM Pacientes
-            WHERE nombre LIKE ? OR apellido LIKE ?";
+            WHERE IdPaciente LIKE ?";
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
         die("Error en la preparación de la consulta: " . $conn->error);
@@ -18,7 +24,7 @@ if ($_SESSION['nombre']) {
 
     // Usar el comodín para coincidencia parcial
     $searchTerm = "%{$nombrePaciente}%";
-    $stmt->bind_param("ss", $searchTerm, $searchTerm);
+    $stmt->bind_param("s", $searchTerm);
     $stmt->execute();
     $result = $stmt->get_result();
     $paciente = $result->fetch_assoc();
@@ -32,9 +38,38 @@ while ($doctor = $doctoresResult->fetch_assoc()) {
     $doctores[] = $doctor;
 }
 
-function obtenerFechaHoy($formato = "Y-m-d H:i:s") {
+function obtenerFechaHoy($formato = "Y-m-d") {
     return date($formato);
 }
+
+$FechaHoy = obtenerFechaHoy();
+function VerificarHora($con, $FechaHoy, $Hr, $IdMedic){
+    $conn = $con;
+    if($FechaHoy != "n/a"){
+        while (mysqli_next_result($conn));
+        $NombrePaciente = "call VerificarHora('$FechaHoy', '$Hr', '$IdMedic');";
+        $query2 = mysqli_query($conn, $NombrePaciente);
+        if ($query2) {
+        $row2 = mysqli_num_rows($query2);
+        $Paciente = $row2; 
+        $query2->free();
+        } else {
+        echo "n/a";
+        }
+        return $Paciente;
+    }else{
+        $Paciente = array(
+            "IdMedico" => "n/a",
+            "nombre" => "n/a",
+            "CedulaProfesional" => "n/a",
+            "especialidad" => "n/a",
+            "telefono" => "n/a",
+            "correo" => "n/a"
+        );
+        return $Paciente;
+    }
+}
+
 
 
 // Procesar el formulario de cita
@@ -49,25 +84,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $Estatus = 'Activo';
 
     // Consulta para insertar datos en la tabla 'Citas'
-    $insertSQL = "INSERT INTO Citas (idPaciente, idMedico, Fecha, Hora, Observaciones, FechaRegistro, Estatus)
-                  VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($insertSQL);
-    if ($stmt) {
-        $stmt->bind_param("iisssss", $IdPaciente, $idMedico, $fechaCita, $horaCita, $observaciones, $FechaRegistro, $Estatus);
-        $stmt->execute();
-        $stmt->close();
-        $mensaje = "Cita registrada con éxito!";
-
-        // Redirigir para evitar reenviar el formulario
-        header("Location: " . $_SERVER['PHP_SELF']);
-        exit;
-    } else {
-        $mensaje = "Error al registrar la cita: " . $conn->error;
+    $VerificarHoraz = VerificarHora($conn, $fechaCita, $horaCita, $idMedico);
+    if ($VerificarHoraz == 0) {
+        $insertSQL = "INSERT INTO Citas (idPaciente, idMedico, Fecha, Hora, Observaciones, FechaRegistro, Estatus)
+        VALUES (?, ?, ?, ?, ?, ?, ?)";
+        while (mysqli_next_result($conn));
+        $stmt = $conn->prepare($insertSQL);
+        if ($stmt) {
+            $stmt->bind_param("iisssss", $IdPaciente, $idMedico, $fechaCita, $horaCita, $observaciones, $FechaRegistro, $Estatus);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $Cita = $result;
+            $stmt->close();
+            $mensaje = "Cita registrada con éxito!";
+            // Redirigir para evitar reenviar el formulario
+        } else {
+            $mensaje = "Error al registrar la cita: " . $conn->error;
+        }
+    }else{
+        $message = "Horario No Disponible";
     }
+    
 }
 
 
 // Obtener el nombre del médico para mostrarlo
+while (mysqli_next_result($conn));
 $medicoSQL = "SELECT nombre FROM Medicos WHERE idMedico = ?";
 $stmt = $conn->prepare($medicoSQL);
 if ($stmt) {
@@ -85,6 +127,13 @@ if ($stmt) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Pacientes</title>
+    <script>
+        function showMessage(message) {
+            if (message) {
+                alert(message); // Mostrar mensaje en un cuadro de alerta
+            }
+        }
+    </script>
     <link rel="stylesheet" href="diseño.css">
     <style>
         body {
@@ -189,13 +238,13 @@ if ($stmt) {
 
     </style>
 </head>
-<body>
+<body onload="showMessage('<?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?>')">
 
 <div class="hero">
         <nav>
             <img src="Age.png" class="logo">
             <ul>
-                <li> <a href="inicio2.php">Inicio</a></li>
+                <li> <a href="../Inicio/inicio2.php">Inicio</a></li>
                 <li> <a href="eliminar.php">Tus Citas</a></li>
             </ul>
         </nav>
@@ -224,10 +273,10 @@ if ($stmt) {
         <?php } ?>
 
         <h2>Agendar Cita</h2>
-        <form method="post" action="">
+        <form method="POST" action="">
             <div class="campo">
                 <label for="fechaCita"></label>
-                <input type="date" name="fechaCita" id="fechaCita" required>
+                <input type="date" name="fechaCita" id="fechaCita" min="<?php echo date('Y-m-d'); ?>" required>
             </div>
             <div class="campo">
                 <label for="horaCita"></label>
@@ -261,7 +310,7 @@ if ($stmt) {
             <input type="submit" value="Agendar">
         </form>
 
-        <?php if (isset($medico)) { ?>
+        <?php if (isset($Cita)) { ?>
             <div class="detalles-cita">
                 <h3>Detalles de la Cita</h3>
                 <p><strong>Médico Asignado:</strong> <?php echo htmlspecialchars($medico['nombre']); ?></p>
